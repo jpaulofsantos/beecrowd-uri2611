@@ -1,5 +1,6 @@
 package com.devsuperior.uri2611;
 
+import com.devsuperior.uri2611.dto.GenreMinDTO;
 import com.devsuperior.uri2611.dto.MovieMinDTO;
 import com.devsuperior.uri2611.projections.GenreMinProjection;
 import com.devsuperior.uri2611.projections.MovieMinProjection;
@@ -59,10 +60,18 @@ public class Uri2611Application implements CommandLineRunner {
 		List<MovieMinDTO> movieMinDTOListJPQL = movieRepository.searchJPQL("Action");
 
 		System.out.println("");
-		System.out.println("----JPQL----");
+		System.out.println("----JPQL-Movie----");
 
 		for (MovieMinDTO item : movieMinDTOListJPQL) {
 			System.out.println(item.getId() + " - " + item.getName());
+		}
+
+		System.out.println("");
+		System.out.println("----JPQL-Genre----");
+
+		List<GenreMinDTO> genreMinDTOList = genreRepository.searchJPQL();
+		for (GenreMinDTO item : genreMinDTOList) {
+			System.out.println(item.getId() + " - " + item.getDescription());
 		}
 	}
 }
